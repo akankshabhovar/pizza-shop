@@ -1,18 +1,24 @@
 package com.cloudgov.pizza_shop.model;
 
-import java.util.Date;
-import java.util.List;
-
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import lombok.Data;
+import com.cloudgov.pizza_shop.enums.OrderStatusEnum;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
-@Document(collection = "order")
+@Document(collection = "orders")
 public class Order {
     @Id
-    private String orderId;
+    private String id;
     private List<Pizza> pizzas;
-    private String orderStatus;
-    private Date timestamp;
+    private String customerName;
+    private String customerAddress;
+    private String phoneNumber;
+    private BigDecimal totalAmount;
+    private OrderStatusEnum status;
+    private LocalDateTime orderTime;
+    private LocalDateTime lastUpdated;
 }
